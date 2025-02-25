@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  nodejs-app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+      - sqs-local
+    environment:
+      - REDIS_HOST=redis
+
+  redis:
+    image: redis:6
+    ports:
+      - "6379:6379"
+
+  sqs-local:
+    image: localstack/localstack
+    environment:
+      - SERVICES=sqs
+    ports:
+      - "4566:4566" # Porta do Localstack para SQS
