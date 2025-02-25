@@ -1,0 +1,14 @@
+GET http://localhost:3000
+
+###
+POST http://localhost:3000/order
+Content-Type: application/json
+
+{
+  "produto": "Produto A",
+  "quantidade": 2
+}
+
+
+
+

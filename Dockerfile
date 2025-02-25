@@ -1,20 +1,20 @@
-# Use a imagem oficial do Node.js
-FROM node:16
+# Imagem base
+FROM node:latest
 
-# Define o diretório de trabalho
-WORKDIR /usr/src/app
+# Diretório de trabalho
+WORKDIR /app
 
-# Copia os arquivos para dentro do container
+# Copiar package.json e package-lock.json
 COPY package*.json ./
 
-# Instala as dependências
+# Instalar dependências
 RUN npm install
 
-# Copia o código da aplicação
+# Copiar todo o código
 COPY . .
 
-# Expõe a porta da aplicação
+# Expor a porta da API
 EXPOSE 3000
 
-# Comando para rodar o servidor
-CMD [ "node", "server.js" ]
+# Comando para rodar a API
+CMD ["node", "server.js"]
